@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/cr32bf3f6ff">
+        android:background="@drawable/background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,8 +32,8 @@
 
                 <ImageView
                     android:id="@+id/logoImageView"
-                    android:layout_width="77dp"
-                    android:layout_height="77dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_marginEnd="6dp"
                     android:src="@drawable/runner"
                     android:scaleType="fitXY"/>

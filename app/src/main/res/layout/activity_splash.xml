@@ -22,8 +22,20 @@
         android:layout_marginTop="-620dp"
         android:text="RunFit"
         android:textSize="24sp"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:textStyle="bold" />
+
+    <!-- TextView baru untuk developer di bagian bawah -->
+    <TextView
+        android:id="@+id/developerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apps by: Zidan Indra Nugraha (PSIK 22A)"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp" />
 
 </RelativeLayout>
