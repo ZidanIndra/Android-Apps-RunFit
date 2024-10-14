@@ -26,7 +26,6 @@
         android:layout_centerHorizontal="true"
         android:textStyle="bold" />
 
-    <!-- TextView baru untuk developer di bagian bawah -->
     <TextView
         android:id="@+id/developerTextView"
         android:layout_width="wrap_content"

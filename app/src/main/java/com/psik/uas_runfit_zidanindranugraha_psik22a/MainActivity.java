@@ -17,34 +17,34 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView totalJarakTextView;
     private Button startButton;
 
-    private int totalLangkah = 0; // Total langkah yang diambil
-    private int durasiMenit = 0; // Durasi dalam menit
-    private int durasiDetik = 0; // Durasi dalam detik
-    private float totalJarak = 0; // Total jarak dalam kilometer
-    private boolean isRunning = false; // Status latihan
+    private int totalLangkah = 0;
+    private int durasiMenit = 0;
+    private int durasiDetik = 0;
+    private float totalJarak = 0;
+    private boolean isRunning = false;
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private long startTime; // Waktu mulai latihan
+    private long startTime;
 
-    private float previousZ = 0; // Nilai akselerasi Z sebelumnya
-    private int stepThreshold = 15; // Ambang batas untuk mendeteksi langkah
+    private float previousZ = 0;
+    private int stepThreshold = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Pastikan ini sesuai dengan nama layout XML
+        setContentView(R.layout.activity_main);
 
-        // Inisialisasi elemen UI
+        // Inisialisasi UI elements
         totalLangkahTextView = findViewById(R.id.totalLangkahTextView);
         durasiLariTextView = findViewById(R.id.durasiLariTextView);
         totalJarakTextView = findViewById(R.id.totalJarakTextView);
-        startButton = findViewById(R.id.startButton); // Ganti dengan ID tombol Anda
+        startButton = findViewById(R.id.startButton);
 
-        // Inisialisasi sensor
+        // Inisialisasi sensor accelerometer
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        // Set onClickListener untuk tombol
+        // btn onClickListener
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,66 +54,63 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void startExercise() {
-        // Reset langkah dan durasi ketika latihan dimulai
         totalLangkah = 0;
         durasiMenit = 0;
-        durasiDetik = 0; // Reset durasi detik
-        totalJarak = 0; // Reset total jarak
+        durasiDetik = 0;
+        totalJarak = 0;
         isRunning = true;
-        startTime = System.currentTimeMillis(); // Simpan waktu mulai
-        previousZ = 0; // Reset nilai sebelumnya
+        startTime = System.currentTimeMillis();
+        previousZ = 0;
 
-        updateUI(); // Perbarui tampilan awal
+        updateUI();
 
-        // Mendaftar listener untuk sensor accelerometer
         sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            // Menghitung langkah berdasarkan perubahan akselerasi
             float x = event.values[0];
             float y = event.values[1];
             float z = event.values[2];
 
-            // Menggunakan algoritma deteksi langkah
             if (isRunning) {
-                // Deteksi langkah berdasarkan perubahan akselerasi Z
-                if (Math.abs(z - previousZ) > stepThreshold) {
+                // Mengkalkulasi perubahan akselerasi
+                float magnitude = (float) Math.sqrt(x * x + y * y + z * z);
+
+                // kalkulasi perubahan signifikan
+                if (Math.abs(magnitude - previousZ) > stepThreshold) {
                     totalLangkah++;
-                    totalJarak = (totalLangkah * 0.7f) / 1000; // Hitung total jarak dalam kilometer
+                    totalJarak = (totalLangkah * 0.7f) / 1000;
                 }
-                previousZ = z; // Update nilai akselerasi Z sebelumnya
+                previousZ = magnitude;
             }
 
-            // Mengupdate UI setelah langkah dihitung
             updateUI();
         }
     }
 
     private void updateUI() {
-        // Hitung durasi dalam menit dan detik
         if (isRunning) {
             long elapsedMillis = System.currentTimeMillis() - startTime;
-            durasiMenit = (int) (elapsedMillis / 60000); // Hitung durasi dalam menit
-            durasiDetik = (int) ((elapsedMillis / 1000) % 60); // Hitung durasi dalam detik
+            durasiMenit = (int) (elapsedMillis / 60000);
+            durasiDetik = (int) ((elapsedMillis / 1000) % 60);
         }
 
         totalLangkahTextView.setText(String.valueOf(totalLangkah));
-        durasiLariTextView.setText(String.format("%d:%02d", durasiMenit, durasiDetik)); // Format MM:SS
-        totalJarakTextView.setText(String.format("%.2f", totalJarak)); // Total jarak dalam kilometer
+        durasiLariTextView.setText(String.format("%d:%02d", durasiMenit, durasiDetik));
+        totalJarakTextView.setText(String.format("%.2f", totalJarak));
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // Tidak perlu diimplementasikan
+        // Not implemented
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        isRunning = false; // Hentikan penghitungan durasi
-        sensorManager.unregisterListener(this); // Hentikan listener saat aktivitas dihancurkan
+        isRunning = false;
+        sensorManager.unregisterListener(this);
     }
 }

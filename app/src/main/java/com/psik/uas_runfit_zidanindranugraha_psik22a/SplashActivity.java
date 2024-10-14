@@ -13,10 +13,9 @@ public class SplashActivity extends AppCompatActivity {
 
         // Menampilkan splash screen selama 2 detik
         new Handler().postDelayed(() -> {
-            // Setelah 2 detik, buka MainActivity
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(intent);
-            finish(); // Mengakhiri splash screen agar tidak kembali
-        }, 2000); // Ubah 2000 sesuai dengan waktu yang diinginkan
+            finish(); //
+        }, 2000); //
     }
 }
