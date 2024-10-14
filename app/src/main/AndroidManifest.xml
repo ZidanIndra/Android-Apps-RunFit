@@ -13,6 +13,9 @@
         android:theme="@style/Theme.UAS_RunFit_ZidanIndraNugraha_PSIK22A"
         tools:targetApi="31">
         <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
