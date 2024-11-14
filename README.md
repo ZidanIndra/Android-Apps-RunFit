@@ -12,7 +12,7 @@ RunFit adalah aplikasi Android yang dikembangkan sebagai proyek akhir untuk mata
 ## Teknologi yang Digunakan
 - **Platform**: Android
 - **Sensor**: Accelerometer pada perangkat untuk pendeteksian langkah.
-- **Bahasa Pemrograman**: Kotlin / Java (sesuaikan dengan bahasa yang Anda gunakan)
+- **Bahasa Pemrograman**: Java 
 
 ## Cara Kerja
 1. **Deteksi Langkah**: RunFit memanfaatkan sensor accelerometer pada smartphone untuk menghitung langkah setiap kali pengguna bergerak.
