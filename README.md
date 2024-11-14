@@ -1,5 +1,3 @@
----
-
 # RunFit
 
 RunFit adalah aplikasi Android yang dikembangkan sebagai proyek akhir untuk mata kuliah **Piranti Bergerak** di Universitas Negeri Medan. Aplikasi ini menggunakan sensor **accelerometer** pada perangkat pengguna untuk mendeteksi langkah saat berolahraga, menghitung durasi aktivitas, dan mengukur total jarak yang ditempuh.
@@ -31,10 +29,3 @@ RunFit adalah aplikasi Android yang dikembangkan sebagai proyek akhir untuk mata
 - **Mulai Aktivitas**: Tekan tombol mulai untuk memulai menghitung langkah, waktu, dan jarak.
 - **Pantau Aktivitas**: Data langkah, waktu, dan jarak akan ditampilkan secara real-time.
 - **Akhiri Aktivitas**: Tekan tombol stop (jika ada) untuk berhenti dan melihat hasil akhir.
-
-## Kontak
-- **Nama**: Zidan Indra Nugraha
-- **Universitas**: Universitas Negeri Medan
-- **Email**: [your-email@example.com]
-
----
