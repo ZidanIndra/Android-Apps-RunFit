@@ -27,9 +27,11 @@ RunFit adalah aplikasi Android yang dikembangkan sebagai proyek akhir untuk mata
 
 ## Tampilan
 **1. SplashScreen**
+
 ![WhatsApp Image 2024-12-25 at 21 47 08_0ff1994c](https://github.com/user-attachments/assets/a0cc900e-5cbb-4333-8c50-ef49576a77a3)
 
 **2. Halaman Latihan Aplikasi**
+
 ![WhatsApp Image 2024-12-25 at 21 47 09_3c08692b](https://github.com/user-attachments/assets/828fff9c-4b8c-43ce-a19f-6ca3c6ea21d9)
 
 ## Penggunaan
